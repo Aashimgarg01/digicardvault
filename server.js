@@ -14,9 +14,10 @@ require('dotenv').config();
 var app = express();
 app.use(
     cors({
-        origin: ['http://localhost:3000'],
+        origin: 'https://digicardvault.com/',
         methods: ['GET', 'POST', 'DELETE'],
         credentials: true,
+        optionsSuccessStatus:200
     })
 );
 app.use(express.json());
@@ -381,7 +382,7 @@ async function sendResetEmail(email, token) {
             html: `
                 <p>We received a request to reset your password.</p>
                 <p>Please click the link below to create a new password:</p>
-                <a href=${`http://localhost:3000/resetpassword/${email}/${token}`}>Reset Password</a>
+                <a href=${`https://digicardvault.com/resetpassword/${email}/${token}`}>Reset Password</a>
                 <p>This link will expire in 1 hour.</p>
                 <p>If you didn't request a password reset, please ignore this email.</p>
                 <p>Sincerely,</p>
